@@ -1,0 +1,53 @@
+﻿
+@model IletisimForm.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="bg-success text-white p-3 rounded" >
+
+    <h2>Edit User</h2>
+
+</div>
+
+
+<form asp-action="Edit" asp-controller="User" method="post" class="m-5">
+    <div class="set-group">
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">İsim*</label>
+            <input type="text" asp-for="FirstName" class="form-control" placeholder="İsim" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Telephone" class="control-label">Telefon*</label>
+            <input type="text" asp-for="Telephone" class="form-control" placeholder="Telefon" />
+        </div>
+    </div>
+
+    <div class="set-group">
+        <div class="form-group">
+            <label asp-for="Eposta" class="control-label">E Posta*</label>
+            <input type="text" asp-for="Eposta" class="form-control" placeholder="E Posta" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Department" class="control-label">Departman*</label>
+            <select asp-for="Department" class="form-control">
+                <option value="" disabled selected>Departman Seçiniz</option>
+                <option value="Muhasebe">Muhasebe</option>
+                <option value="TeknikDestek">Teknik Destek</option>
+                <option value="InsanKaynaklari">İnsan Kaynakları</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Message" class="control-label">Mesajınız*</label>
+        <textarea asp-for="Message" class="form-control" placeholder="Mesajınız"></textarea>
+    </div>
+
+    
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    
+</form>
