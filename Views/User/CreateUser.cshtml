@@ -10,6 +10,72 @@
         .containertop{
             margin-top:20px;
         }
+
+        .main-popup {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center; /* Yatayda ortala */
+            align-items: center; /* Dikeyde ortala */
+            z-index: 1000; /* Popup'ın önde görünmesini sağla */
+        }
+
+        .popup {
+            text-align: center;
+            width: 90%; /* Mobil uyumlu genişlik */
+            max-width: 600px; /* Maksimum genişlik */
+            padding: 20px;
+            background: white;
+            border-radius: 10px; /* Köşeleri yuvarla */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Gölge */
+            position: relative; /* Kapat butonunu konumlandırmak için */
+            overflow: hidden; /* İçeriğin dışa taşmasını önle */
+        }
+
+            .popup img {
+                max-width: 100%; /* Genişlik olarak %100'ü geçmesin */
+                height: auto; /* Oranlı şekilde yükseklik */
+                max-height: 400px; /* Maksimum yükseklik */
+                object-fit: contain; /* İçeriği sığdır */
+                border-radius: 8px; /* Köşeleri yuvarla */
+                margin-bottom: 15px; /* Resim ile alt içerik arası boşluk */
+            }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 22px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .button-ok {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            .button-ok:hover {
+                background-color: darkred; /* Hover efekt */
+            }
+
+
+    
+
+
+
+
     </style>
 </head>
 
@@ -61,7 +127,40 @@
                     <button type="submit" class="btn btn-primary ml-4" style="width: 350px;">Gönder</button>
                 </div>
             </form>
+            <div class="main-popup">
+                <div class="popup">
+                    <div class="popup-close">X</div>
+                    <div class="popup-content">
+                        <img src="~/lib/20.png" />
+                        <h3>Merhaba! İstek, öneri veya şikayetlerinizi bizimle paylaşabilirsiniz. Size en kısa sürede geri dönüş yapacağız. 7/24 hizmetinizdeyiz!</h3>
+                        <button class="button-ok">Tamam</button>
+         
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 </html>
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        const mainPopup = document.querySelector('.main-popup');
+        const close = document.querySelector('.popup-close');
+        const buttonOk = document.querySelector('.button-ok');
+        close.addEventListener('click', () => {
+            mainPopup.style.display = 'none';
+        })
+        buttonOk.addEventListener('click', () => {
+            mainPopup.style.display = 'none';
+        })
+    </script>
+
+    <script>
+        const inputFailed = document.querySelectorAll('.form-control');
+        inputFailed.forEach(input => {
+            input.setAttribute('required', true);
+        })
+    </script>
+}
